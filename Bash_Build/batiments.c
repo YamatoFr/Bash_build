@@ -20,6 +20,6 @@ void insertEnd(List *List, Board *b, Player *p, Building *bu)
 	}
 }
 
-Building *newBuilding(Board *b, Player *p, List *List)
-{
-}
+// Building *newBuilding(Board *b, Player *p, List *List)
+// {
+// }

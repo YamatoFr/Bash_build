@@ -5,9 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 // ==============
+#include <fcntl.h>
 #include <termios.h>
 #include <unistd.h>
-#include <fcntl.h>
 // ==============
 
 void *mallocP(size_t size) {

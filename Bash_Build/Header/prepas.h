@@ -6,8 +6,7 @@
 #include <stdlib.h>
 
 typedef struct Board Board;
-struct Board
-{
+struct Board {
     int width;
     int height;
     int **map;
@@ -43,7 +42,7 @@ int kbhit(void);
 
 void emptyBuffer();
 
-// ==================== Plateau 
+// ==================== Plateau
 
 List *insertList();
 
@@ -55,7 +54,7 @@ void resetboard(Board *b, List *l);
 
 void printBoard(Board *b);
 
-// ==================== Plateau 
+// ==================== Plateau
 
 // ==================== Bat
 void insertEnd(List *li, Building *bu);
@@ -63,6 +62,8 @@ void insertEnd(List *li, Building *bu);
 Building *newBuilding(Board *b, Player *p, List *li);
 // ==================== Bat
 
-
+// ==================== Joeur
+Player *createPlayer();
+// ==================== Joeur
 
 #endif /* prepas_h */

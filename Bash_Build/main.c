@@ -2,7 +2,7 @@
 
 #include <stdbool.h>
 // #include <conio.h>
-#include <curses.h>
+// #include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

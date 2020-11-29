@@ -1,5 +1,5 @@
-#include "./Header/structs.h"
-#include "plateau.c"
+#include "./Header/prepas.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

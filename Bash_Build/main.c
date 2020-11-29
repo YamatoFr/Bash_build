@@ -2,14 +2,15 @@
 
 #include <stdbool.h>
 // #include <conio.h>
+#include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#include "./Header/structs.h"
-#include "batiments.c"
-#include "joueur.c"
-#include "plateau.c"
+#include "./Header/prepas.h"
+// #include "batiments.c"
+// #include "joueur.c"
+// #include "plateau.c"
 
 int main() {
     // system("cls");

@@ -1,13 +1,12 @@
-#include "./Header/structs.h"
-#include "plateau.c"
+#include "./Header/prepas.h"
 
 // #include <conio.h>
+#include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-void insertEnd(List *li, Building *bu)
-// Fonction similaire à une fonction d'insertion en fin de liste
-{
+void insertEnd(List *li, Building *bu) {
+    // Fonction similaire à une fonction d'insertion en fin de liste
     if (li->nbBuilds == 0) {
         li->head = bu;
     } else {

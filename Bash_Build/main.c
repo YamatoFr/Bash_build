@@ -30,7 +30,7 @@ int main()
         p->money += p->salary;
 
         system("cls");
-        printf("/ Jour %d / %de / +%d€ par jour /\n", day, p->money, p->salary);
+        printf("| Jour %d | %de | +%d€ par jour |\n", day, p->money, p->salary);
 
         resetboard(b, buildingList);
         printBoard(b);

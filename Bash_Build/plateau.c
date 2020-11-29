@@ -43,6 +43,7 @@ Board *createBoard() {
 
 void create2dBoard(Board **b) {
     int **board = (int **)mallocP((*b)->width * sizeof(int *));
+    
 
     for (int i = 0; i < (*b)->width; i++) {
         board[i] = (int *)mallocP((*b)->height * sizeof(int));
@@ -50,7 +51,7 @@ void create2dBoard(Board **b) {
     (*b)->map = board;
 }
 
-void resetboard(Board **b, List *l) {
+void resetboard(Board *b, List *l) {
     for (int i = 0; i < b->width; i++) {
         for (int j = 0; j < b->height; j++) {
             (b->map)[i][j] = 0;

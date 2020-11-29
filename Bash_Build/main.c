@@ -33,7 +33,7 @@ int main()
 
         // system("cls");
         system("clear");
-        printf("| Jour %d | %de | +%d€ par jour |\n", day, p->money, p->salary);
+        printf("| Jour %d | %d e | +%d e par jour |\n", day, p->money, p->salary);
 
         resetboard(b, buildingList);
         printBoard(b);

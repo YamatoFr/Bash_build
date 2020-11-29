@@ -1,18 +1,17 @@
 /* En accord avec le groupe, les noms de variables seront en anglais */
 
 #include <stdbool.h>
-#include <conio.h>
+// #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-#include "./Header/struct.h"
+#include "./Header/structs.h"
 #include "batiments.c"
-#include "plateau.c"
 #include "joueur.c"
+#include "plateau.c"
 
-int main()
-{
+int main() {
     system("cls");
     bool playing = true;
     int day = 0;
@@ -24,8 +23,7 @@ int main()
 
     create2dBoard(&b);
 
-    while (playing == true)
-    {
+    while (playing == true) {
         day++;
         p->money += p->salary;
 

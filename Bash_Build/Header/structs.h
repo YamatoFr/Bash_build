@@ -1,3 +1,7 @@
+
+#ifndef structs_h
+#define structs_h
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -31,3 +35,5 @@ struct LinkedList {
     Building *head;
     int nbBuilds;
 };
+
+#endif /* structs_h */

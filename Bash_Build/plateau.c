@@ -1,5 +1,5 @@
-#include "./Header/struct.h"
-#include <conio.h>
+#include "./Header/structs.h"
+// #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 

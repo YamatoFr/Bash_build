@@ -1,7 +1,7 @@
-#include "./Header/struct.h"
+#include "./Header/structs.h"
 #include "plateau.c"
 
-#include <conio.h>
+// #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 

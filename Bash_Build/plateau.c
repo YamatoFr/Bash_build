@@ -16,11 +16,9 @@ void *mallocP(size_t size) {
 }
 
 void emptyBuffer() {
-    int a = 0;
-
-    while (a != "\n" && a != EOF) {
-        a = getchar();
-    }
+    int c = 0;
+    while (c != '\n' && c != EOF)
+        c = getchar();
 }
 
 List *insertList() {
@@ -43,7 +41,6 @@ Board *createBoard() {
 
 void create2dBoard(Board **b) {
     int **board = (int **)mallocP((*b)->width * sizeof(int *));
-    
 
     for (int i = 0; i < (*b)->width; i++) {
         board[i] = (int *)mallocP((*b)->height * sizeof(int));

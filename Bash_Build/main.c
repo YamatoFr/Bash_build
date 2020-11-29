@@ -12,7 +12,8 @@
 #include "plateau.c"
 
 int main() {
-    system("cls");
+    // system("cls");
+    system("clear");
     bool playing = true;
     int day = 0;
 
@@ -27,7 +28,8 @@ int main() {
         day++;
         p->money += p->salary;
 
-        system("cls");
+        // system("cls");
+        system("clear");
         printf("| Jour %d | %de | +%d€ par jour |\n", day, p->money, p->salary);
 
         resetboard(b, buildingList);

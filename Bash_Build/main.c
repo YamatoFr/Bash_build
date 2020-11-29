@@ -1,9 +1,16 @@
 /* En accord avec le groupe, les noms de variables seront en anglais */
+<<<<<<< HEAD
 
 #include <stdbool.h>
+=======
+>>>>>>> a044e23d7fa1a2bb6892459962f1da5350f46796
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <conio.h>
+#include "structs.c"
+#include "plateau.c"
+#include "batiments.c"
 
 #include "plateau.c"
 

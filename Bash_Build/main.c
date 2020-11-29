@@ -22,11 +22,17 @@ int main()
     Player *p = createPlayer();
     List *buildingList = insertList();
 
+    create2dBoard(&b);
+
     while (playing == true)
     {
+        day++;
+        p->money += p->salary;
 
-        /* code */
+        system("cls");
+        printf("/ Jour %d / %de / +%d€ par jour /\n", day, p->money, p->salary);
 
-        if ()
+        resetboard(b, buildingList);
+        printBoard(b);
     }
 }

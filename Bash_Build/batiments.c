@@ -1,17 +1,22 @@
 #include "./Header/prepas.h"
 
 // #include <conio.h>
-#include <curses.h>
+// #include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-void insertEnd(List *li, Building *bu) {
+void insertEnd(List *li, Building *bu)
+{
     // Fonction similaire à une fonction d'insertion en fin de liste
-    if (li->nbBuilds == 0) {
+    if (li->nbBuilds == 0)
+    {
         li->head = bu;
-    } else {
+    }
+    else
+    {
         Building *head = li->head;
-        while (head->next != NULL) {
+        while (head->next != NULL)
+        {
             head = head->next;
         }
         head->next = bu;
@@ -20,7 +25,8 @@ void insertEnd(List *li, Building *bu) {
     li->nbBuilds++;
 }
 
-Building *newBuilding(Board *b, Player *p, List *li) {
+Building *newBuilding(Board *b, Player *p, List *li)
+{
     Building *bu = (Building *)mallocP(sizeof(Building));
     bu->next = NULL;
     bu->cost = 0;
@@ -32,9 +38,10 @@ Building *newBuilding(Board *b, Player *p, List *li) {
 
     while (!kbhit()) /* kbhit = keyboard hit */
     {
-        char key = getch();
-        if (key = "") {
-            /* code */
-        }
+        // char key = getch();
+        // if (key == "S")
+        // {
+        //     /* code */
+        // }
     }
 }

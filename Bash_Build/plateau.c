@@ -1,20 +1,22 @@
 #include "./Header/prepas.h"
 // #include <conio.h>
-#include <curses.h>
+// #include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 // ==============
 #include <fcntl.h>
-#include <termios.h>
+// #include <termios.h>
 #include <unistd.h>
 // ==============
 
-void *mallocP(size_t size) {
+void *mallocP(size_t size)
+{
     void *p = NULL;
     p = malloc(size);
 
-    if (p == NULL) {
+    if (p == NULL)
+    {
         perror("|!| Erreur alloocation \n");
         exit(EXIT_FAILURE);
     }
@@ -22,39 +24,44 @@ void *mallocP(size_t size) {
     return p;
 }
 
-int kbhit(void) {
-    struct termios oldt, newt;
-    int ch;
-    int oldf;
+// int kbhit(void)
+// {
+//     struct termios oldt, newt;
+//     int ch;
+//     int oldf;
 
-    tcgetattr(STDIN_FILENO, &oldt);
-    newt = oldt;
-    newt.c_lflag &= ~(ICANON | ECHO);
-    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-    oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
-    fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+//     tcgetattr(STDIN_FILENO, &oldt);
+//     newt = oldt;
+//     newt.c_lflag &= ~(ICANON | ECHO);
+//     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+//     oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+//     fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
 
-    ch = getchar();
+//     ch = getchar();
 
-    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-    fcntl(STDIN_FILENO, F_SETFL, oldf);
+//     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+//     fcntl(STDIN_FILENO, F_SETFL, oldf);
 
-    if (ch != EOF) {
-        ungetc(ch, stdin);
-        return 1;
-    }
+//     if (ch != EOF)
+//     {
+//         ungetc(ch, stdin);
+//         return 1;
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
 
-void emptyBuffer() {
+void emptyBuffer()
+{
     int c = 0;
-    while (c != '\n' && c != EOF) {
+    while (c != '\n' && c != EOF)
+    {
         c = getchar();
     }
 }
 
-List *insertList() {
+List *insertList()
+{
     List *List = mallocP(sizeof(List));
 
     List->head = NULL;
@@ -63,7 +70,8 @@ List *insertList() {
     return List;
 }
 
-Board *createBoard() {
+Board *createBoard()
+{
     Board *b = (Board *)mallocP(sizeof(Board));
 
     b->width = 10;
@@ -72,43 +80,64 @@ Board *createBoard() {
     return b;
 }
 
-void create2dBoard(Board **b) {
+void create2dBoard(Board **b)
+{
     int **board = (int **)mallocP((*b)->width * sizeof(int *));
 
-    for (int i = 0; i < (*b)->width; i++) {
+    for (int i = 0; i < (*b)->width; i++)
+    {
         board[i] = (int *)mallocP((*b)->height * sizeof(int));
     }
     (*b)->map = board;
 }
 
-void resetboard(Board *b, List *l) {
-    for (int i = 0; i < b->width; i++) {
-        for (int j = 0; j < b->height; j++) {
+void showBuild(Board *b, Building *bu, int mode)
+{
+    for (int k = bu->x; k < bu->x + bu->width; k++)
+    {
+        for (int l = bu->y; l < bu->y + bu->height; l++)
+            (b->map)[l][k] = mode;
+    }
+}
+
+void resetboard(Board *b, List *l)
+{
+    for (int i = 0; i < b->width; i++)
+    {
+        for (int j = 0; j < b->height; j++)
+        {
             (b->map)[i][j] = 0;
         }
     }
 
     Building *bu = l->head;
-    while (b != NULL) {
-        showbat(b, bu);
+    while (b != NULL)
+    {
+        // showBuild(b, bu, );
         bu = bu->next;
     }
 }
 
-void printBoard(Board *b) {
+void printBoard(Board *b)
+{
     printf("\n");
 
-    for (int i = 0; i < b->width; i++) {
-        for (int j = 0; j < b->height; j++) {
+    for (int i = 0; i < b->width; i++)
+    {
+        for (int j = 0; j < b->height; j++)
+        {
             int state = (b->map)[i][j];
 
-            if (state == 1) {
+            if (state == 1)
+            {
                 /* case vide */
             }
-            if (state == 2) {
+            if (state == 2)
+            {
                 /* on place un batiment */
             }
-            if (state == 3) {
+            if (state == 3)
+            {
                 /* le batiment est placé */
             }
         }

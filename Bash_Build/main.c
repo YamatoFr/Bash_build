@@ -8,11 +8,12 @@
 #include <time.h>
 
 #include "./Header/prepas.h"
-// #include "batiments.c"
-// #include "joueur.c"
-// #include "plateau.c"
+#include "batiments.c"
+#include "joueur.c"
+#include "plateau.c"
 
-int main() {
+int main()
+{
     // system("cls");
     system("clear");
     bool playing = true;
@@ -25,7 +26,8 @@ int main() {
 
     create2dBoard(&b);
 
-    while (playing == true) {
+    while (playing == true)
+    {
         day++;
         p->money += p->salary;
 

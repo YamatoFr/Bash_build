@@ -9,16 +9,20 @@
 #include "./Header/struct.h"
 #include "batiments.c"
 #include "plateau.c"
+#include "joueur.c"
 
 int main()
 {
+    system("cls");
     bool playing = true;
     int day = 0;
+
     Board *b = createBoard();
     printf("\n");
-    Player *p = cr
+    Player *p = createPlayer();
+    List *buildingList = insertList();
 
-        while (playing == true)
+    while (playing == true)
     {
 
         /* code */

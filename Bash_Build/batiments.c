@@ -5,13 +5,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void insertEnd(List *li, Building *bu) {
+void insertEnd(List *li, Building *bu)
+{
     // Fonction similaire à une fonction d'insertion en fin de liste
-    if (li->nbBuilds == 0) {
+    if (li->nbBuilds == 0)
+    {
         li->head = bu;
-    } else {
+    }
+    else
+    {
         Building *head = li->head;
-        while (head->next != NULL) {
+        while (head->next != NULL)
+        {
             head = head->next;
         }
         head->next = bu;
@@ -20,7 +25,8 @@ void insertEnd(List *li, Building *bu) {
     li->nbBuilds++;
 }
 
-Building *newBuilding(Board *b, Player *p, List *li) {
+Building *newBuilding(Board *b, Player *p, List *li)
+{
     Building *bu = (Building *)mallocP(sizeof(Building));
     bu->next = NULL;
     bu->cost = 0;
@@ -30,6 +36,7 @@ Building *newBuilding(Board *b, Player *p, List *li) {
     insertEnd(li, bu);
     int selecting = 0, choice = 0;
 
+<<<<<<< HEAD
     // while (!kbhit()) {
     //     /* kbhit = keyboard hit */
     //     char key = getch();
@@ -39,4 +46,14 @@ Building *newBuilding(Board *b, Player *p, List *li) {
     // }
 
     return bu;
+=======
+    while (!kbhit()) /* kbhit = keyboard hit */
+    {
+        // char key = getch();
+        // if (key == "S")
+        // {
+        //     /* code */
+        // }
+    }
+>>>>>>> 9a6fb89db23c464a7f24f8116d4fe06f0524ce2b
 }

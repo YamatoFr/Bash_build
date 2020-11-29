@@ -21,7 +21,7 @@ struct Building
 };
 
 typedef struct Player Player;
-struct Player;
+struct Player
 {
 	char name[20];
 	int money;

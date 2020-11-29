@@ -10,4 +10,6 @@ Player *createPlayer() {
     fgets(p->name, 20, stdin);
     p->money = 100;
     p->salary = 0;
+
+    return p;
 }

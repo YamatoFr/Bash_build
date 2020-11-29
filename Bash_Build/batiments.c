@@ -1,7 +1,7 @@
 #include "./Header/prepas.h"
 
 // #include <conio.h>
-#include <curses.h>
+// #include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -30,11 +30,13 @@ Building *newBuilding(Board *b, Player *p, List *li) {
     insertEnd(li, bu);
     int selecting = 0, choice = 0;
 
-    while (!kbhit()) /* kbhit = keyboard hit */
-    {
-        char key = getch();
-        if (key = "") {
-            /* code */
-        }
-    }
+    // while (!kbhit()) {
+    //     /* kbhit = keyboard hit */
+    //     char key = getch();
+    //     if (key = "") {
+    //         /* code */
+    //     }
+    // }
+
+    return bu;
 }

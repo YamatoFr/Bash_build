@@ -8,9 +8,9 @@
 #include <time.h>
 
 #include "./Header/prepas.h"
-// #include "batiments.c"
-// #include "joueur.c"
-// #include "plateau.c"
+#include "./batiments.c"
+#include "./joueur.c"
+#include "./plateau.c"
 
 int main() {
     // system("cls");

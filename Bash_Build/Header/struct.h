@@ -23,6 +23,7 @@ typedef struct Player Player;
 struct Player {
     char name[20];
     int money;
+    int salary;
 };
 
 typedef struct LinkedList List;

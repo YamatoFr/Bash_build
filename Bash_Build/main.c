@@ -34,7 +34,7 @@ int main(int argc, const char **argv) {
         printBoard(p_board);
 
         printf("\n");
-        printf("%s What to do? : \n", p_player->name);
+        printf("\033[1;35;1m%s\033[0m What to do? : \n", p_player->name);
         printf("============================\n");
         printf("Make choice : \n");
         printf("[1] Build building\n");

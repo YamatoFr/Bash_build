@@ -30,7 +30,7 @@ Building *newBuilding(Board *b, Player *p_player, int day, List *p_liste) {
     while (not_done == true) {
         system("clear");
 
-        printf(" %s you have [%d€] in your wallet  \n", p_player->name, p_player->money);
+        printf("\033[1;35;1m%s\033[0m you have [%d€] in your wallet  \n", p_player->name, p_player->money);
 
         printf("\n \n");
         printf("Choose type of building : \n");

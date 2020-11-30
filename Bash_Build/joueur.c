@@ -12,6 +12,7 @@ void cleanBuffer() {
 
 Player *createPlayer() {
     system("clear");
+    // system("cls");  
     Player *p = mallocP(sizeof(Player));
     printf("Enter your name : \n");
     printf("============================\n");

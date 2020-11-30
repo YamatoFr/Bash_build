@@ -1,7 +1,6 @@
 /* En accord avec le groupe, les noms de variables seront en anglais */
 
 #include <stdbool.h>
-#include <curses.h> //flag
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -11,7 +10,7 @@
 #include "plateau.c"
 
 int main(int argc, const char **argv) {
-    // system("cls");
+    // system("cls");  
     system("clear");
     bool playing = true;
     int day = 0, choice;
@@ -35,6 +34,7 @@ int main(int argc, const char **argv) {
 
         printf("\n");
         printf("\033[1;35;1m%s\033[0m What to do? : \n", p_player->name);
+        // printf("\033[1;35;1m%s\033[0m What to do? : \n", p_player->name);
         printf("============================\n");
         printf("Make choice : \n");
         printf("[1] Build building\n");

@@ -20,7 +20,6 @@ struct Building {
     int width;
     int height;
     int id;
-    int lvl;
     int cost;
     int current;
     int currentDay;

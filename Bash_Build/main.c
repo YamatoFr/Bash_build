@@ -33,8 +33,6 @@ int main(int argc, const char **argv) {
         resetboard(p_board, buildingList);
         printBoard(p_board);
 
-        Building *pbuilding = buildingList->head;
-
         printf("\n");
         printf("%s What to do? : \n", p_player->name);
         printf("============================\n");

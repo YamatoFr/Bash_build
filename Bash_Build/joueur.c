@@ -17,7 +17,7 @@ Player *createPlayer() {
     printf("============================\n");
     cleanBuffer();
     fgets(p->name, 20, stdin);
-    p->money = 300;
+    p->money = 600;
     p->earnings = 0;
 
     return p;

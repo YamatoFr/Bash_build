@@ -47,8 +47,6 @@ struct LinkedList {
 
 void *mallocP(size_t size);
 
-int kbhit(void);
-
 void cleanBuffer();
 
 // ==================== Plateau
@@ -73,7 +71,7 @@ void drawBuilding(Board *b, Building *bu, int state);
 
 void insertEnd(List *li, Building *p_building);
 
-Building *newBuilding(Board *b, Player *p_player, List *p_liste, int day);
+Building *newBuilding(Board *b, Player *p_player, int day, List *p_liste);
 
 void printBuilding(Building *p_building);
 

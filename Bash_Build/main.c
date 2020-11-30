@@ -1,10 +1,9 @@
 /* En accord avec le groupe, les noms de variables seront en anglais */
 
 #include <stdbool.h>
-#include <curses.h>
+#include <curses.h> //flag
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 #include "./Header/prepas.h"
 #include "batiments.c"
@@ -34,8 +33,6 @@ int main(int argc, const char **argv) {
         resetboard(p_board, buildingList);
         printBoard(p_board);
 
-        printf("Building [%d] :", buildingList->nbBuilds);
-
         Building *pbuilding = buildingList->head;
 
         printf("\n");
@@ -56,7 +53,7 @@ int main(int argc, const char **argv) {
         }
 
         if (choice == 1) {
-            newBuilding(p_board, p_player, buildingList, day);
+            newBuilding(p_board, p_player, day, buildingList);
         }
 
         if (choice == 2) {

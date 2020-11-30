@@ -17,13 +17,12 @@ void insertEnd(List *li, Building *p_building) {
     li->nbBuilds++;
 }
 
-Building *newBuilding(Board *b, Player *p_player, List *p_liste, int day) {
+Building *newBuilding(Board *b, Player *p_player, int day, List *p_liste) {
     Building *p_building = (Building *)mallocP(sizeof(Building));
     p_building->next = NULL;
     p_building->cost = 0;
-    p_building->x = 0;
-    p_building->y = 0;
-    p_building->current = 0;
+    p_building->x = 1;
+    p_building->y = 1;
     bool not_done = true;
     int choice;
     insertEnd(p_liste, p_building);
@@ -34,7 +33,7 @@ Building *newBuilding(Board *b, Player *p_player, List *p_liste, int day) {
         printf(" %s you have [%d€] in your wallet  \n", p_player->name, p_player->money);
 
         printf("\n \n");
-        printf("%s Choose type of building : \n", p_player->name);
+        printf("Choose type of building : \n");
         printf("============================\n");
         printf("Make choice : \n");
         printf("[1] Buy Bank |1000€|\n");
@@ -69,7 +68,6 @@ Building *newBuilding(Board *b, Player *p_player, List *p_liste, int day) {
     not_done = true;
     while (not_done == true) {
         system("clear");
-        printf("%d, %d\n", p_building->x, p_building->y);
 
         resetboard(b, p_liste);
         printBoard(b);
@@ -80,7 +78,7 @@ Building *newBuilding(Board *b, Player *p_player, List *p_liste, int day) {
         printf("[2] move down\n");
         printf("[3] move left\n");
         printf("[4] move right\n");
-        printf("[0] \033[36;1mReturn\033[0m\n");
+        printf("[0] \033[36;1mConfirm\033[0m\n");
         printf("============================\n");
         printf("Your choince : \n");
         scanf("%d", &choice);
@@ -88,22 +86,27 @@ Building *newBuilding(Board *b, Player *p_player, List *p_liste, int day) {
         if (choice == 1 && p_building->y > 0) {
             (p_building->y) = p_building->y - 1;
         }
-        if (choice == 2 && p_building->y < p_building->height - b->height) {
+
+        if (choice == 2 && p_building->y > 0) {
             (p_building->y) = p_building->y + 1;
         }
+
+        // =====================================================
 
         if (choice == 3 && p_building->x > 0) {
             (p_building->x) = p_building->x - 1;
         }
-        if (choice == 4 && p_building->x < p_building->width - b->width) {
+
+        if (choice == 4 && p_building->x > 0) {
             (p_building->x) = p_building->x + 1;
         }
+
+        // =====================================================
 
         if (choice == 0) {
             not_done = false;
         }
     }
-    p_building->pandingB = 1;
     p_player->earnings = p_player->earnings + p_building->building_income;
     p_player->money = p_player->money - p_building->cost;
 

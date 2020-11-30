@@ -1,7 +1,6 @@
 /* En accord avec le groupe, les noms de variables seront en anglais */
 
 #include <stdbool.h>
-// #include <conio.h>
 #include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,28 +28,15 @@ int main(int argc, const char **argv) {
 
         p_player->money += p_player->earnings;
 
-        //  system("cls");
         system("clear");
         printf("[Day %d | %d € | +%d € per day ]\n", day, p_player->money, p_player->earnings);
-        // printf("/ Prets /");
         printf("\n");
-
         resetboard(p_board, buildingList);
         printBoard(p_board);
 
         printf("Building [%d] :", buildingList->nbBuilds);
 
         Building *pbuilding = buildingList->head;
-
-        // while (pbuilding != NULL) {
-        //     if (pbuilding->id == 0) {
-        //         printf("Bank");
-        //     }
-        //     if (pbuilding->id == 1) {
-        //         printf("House");
-        //     }
-        //     pbuilding = pbuilding->next;
-        // }
 
         printf("\n");
         printf("%s What to do? : \n", p_player->name);

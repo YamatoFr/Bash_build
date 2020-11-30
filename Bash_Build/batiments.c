@@ -80,6 +80,7 @@ Building *newBuilding(Board *b, Player *p_player, List *p_liste, int day) {
         printf("[2] move down\n");
         printf("[3] move left\n");
         printf("[4] move right\n");
+        printf("[0] \033[36;1mReturn\033[0m\n");
         printf("============================\n");
         printf("Your choince : \n");
         scanf("%d", &choice);

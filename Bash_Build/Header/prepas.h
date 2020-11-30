@@ -47,6 +47,8 @@ struct LinkedList {
 
 void *mallocP(size_t size);
 
+int kbhit(void);
+
 void cleanBuffer();
 
 // ==================== Plateau
@@ -60,6 +62,8 @@ Board *createBoard();
 void create2dBoard(Board **b);
 
 void resetboard(Board *b, List *p_liste);
+
+void printBoard(Board *b);
 
 // ==================== Plateau
 

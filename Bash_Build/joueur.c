@@ -13,6 +13,7 @@ void cleanBuffer() {
 Player *createPlayer() {
     Player *p = mallocP(sizeof(Player));
     printf("Entrez votre nom: \n");
+    printf("============================\n");
     cleanBuffer();
     fgets(p->name, 20, stdin);
     p->money = 300;

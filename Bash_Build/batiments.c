@@ -83,23 +83,31 @@ Building *newBuilding(Board *b, Player *p_player, int day, List *p_liste) {
         printf("Your choince : \n");
         scanf("%d", &choice);
 
-        if (choice == 1 && p_building->y > 0) {
+        if (choice == 1 && p_building->y >= 0) {
             (p_building->y) = p_building->y - 1;
         }
 
-        if (choice == 2 && p_building->y > 0) {
+        if (choice == 2 && p_building->y >= 0) {
             (p_building->y) = p_building->y + 1;
         }
 
+        // if (p_building->y < (p_building->height - b->height)) {
+        //     (p_building->y) = p_building->y + 1;
+        // }
+
         // =====================================================
 
-        if (choice == 3 && p_building->x > 0) {
+        if (choice == 3 && p_building->x >= 0) {
             (p_building->x) = p_building->x - 1;
         }
 
-        if (choice == 4 && p_building->x > 0) {
-            (p_building->x) = p_building->x + 1;
+        if (choice == 4 && p_building->x >= 0) {
+            (p_building->x) = p_building->x + 2;
         }
+
+        // if (p_building->x < (p_building->width - b->width)) {
+        //     (p_building->x) = p_building->x + 1;
+        // }
 
         // =====================================================
 

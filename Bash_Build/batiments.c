@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 void insertEnd(List *li, Building *p_building) {
     if (li->nbBuilds == 0) {

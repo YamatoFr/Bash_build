@@ -1,30 +1,16 @@
+#include "./Header/colors.h"
 #include "./Header/prepas.h"
 
-// #include <conio.h>
-// #include <curses.h>
+#include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-<<<<<<< HEAD
-=======
-// ==============
-#include <fcntl.h>
-// #include <termios.h>
->>>>>>> 9a6fb89db23c464a7f24f8116d4fe06f0524ce2b
 #include <unistd.h>
 
-// ==============
-// #include <fcntl.h>
-// #include <termios.h>
-// ==============
-
-void *mallocP(size_t size)
-{
+void *mallocP(size_t size) {
     void *p = NULL;
     p = malloc(size);
 
-    if (p == NULL)
-    {
+    if (p == NULL) {
         perror("|!| Erreur alloocation \n");
         exit(EXIT_FAILURE);
     }
@@ -32,136 +18,87 @@ void *mallocP(size_t size)
     return p;
 }
 
-<<<<<<< HEAD
-// int kbhit(void) {
-=======
-// int kbhit(void)
-// {
->>>>>>> 9a6fb89db23c464a7f24f8116d4fe06f0524ce2b
-//     struct termios oldt, newt;
-//     int ch;
-//     int oldf;
+List *insertList() {
+    List *p_liste = mallocP(sizeof(List));
 
-//     tcgetattr(STDIN_FILENO, &oldt);
-//     newt = oldt;
-//     newt.c_lflag &= ~(ICANON | ECHO);
-//     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-//     oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
-//     fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+    p_liste->head = NULL;
+    p_liste->nbBuilds = 0;
 
-//     ch = getchar();
+    return p_liste;
+}
 
-//     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-//     fcntl(STDIN_FILENO, F_SETFL, oldf);
+void create2dBoard(Board **b) {
+    int **p_board = mallocP((*b)->width * sizeof(*p_board));
 
-<<<<<<< HEAD
-//     if (ch != EOF) {
-=======
-//     if (ch != EOF)
-//     {
->>>>>>> 9a6fb89db23c464a7f24f8116d4fe06f0524ce2b
-//         ungetc(ch, stdin);
-//         return 1;
-//     }
-
-//     return 0;
-// }
-
-void emptyBuffer()
-{
-    int c = 0;
-    while (c != '\n' && c != EOF)
-    {
-        c = getchar();
+    for (int i = 0; i < (*b)->width; i++) {
+        p_board[i] = mallocP((*b)->height * sizeof(p_board));
     }
+    (*b)->map = p_board;
 }
 
-List *insertList()
-{
-    List *List = mallocP(sizeof(List));
-
-    List->head = NULL;
-    List->nbBuilds = 0;
-
-    return List;
-}
-
-Board *createBoard()
-{
+Board *createBoard() {
     Board *b = (Board *)mallocP(sizeof(Board));
 
-    b->width = 10;
-    b->height = 10;
+    int not_done = 0, choice;
+
+    while (not_done == 0) {
+        printf("Choose the size of your tray : \n");
+        printf("============================\n");
+        printf("Faire choix : \n");
+        printf("[1] Plateau 10 par 10\n");
+        printf("[2] Plateau 20 par 20\n");
+        printf("============================\n");
+        printf("Saisir choix : \n");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            b->width = 10;
+            b->height = 10;
+            not_done = 1;
+        }
+
+        if (choice == 2) {
+            b->width = 20;
+            b->height = 20;
+            not_done = 1;
+        }
+    }
 
     return b;
 }
 
-void create2dBoard(Board **b)
-{
-    int **board = (int **)mallocP((*b)->width * sizeof(int *));
-
-    for (int i = 0; i < (*b)->width; i++)
-    {
-        board[i] = (int *)mallocP((*b)->height * sizeof(int));
-    }
-    (*b)->map = board;
-}
-
-void showBuild(Board *b, Building *bu, int mode)
-{
-    for (int k = bu->x; k < bu->x + bu->width; k++)
-    {
-        for (int l = bu->y; l < bu->y + bu->height; l++)
-            (b->map)[l][k] = mode;
-    }
-}
-
-void resetboard(Board *b, List *l)
-{
-    for (int i = 0; i < b->width; i++)
-    {
-        for (int j = 0; j < b->height; j++)
-        {
+void resetboard(Board *b, List *p_liste) {
+    for (int i = 0; i < b->width; i++) {
+        for (int j = 0; j < b->height; j++) {
             (b->map)[i][j] = 0;
         }
     }
+    Building *p_building = p_liste->head;
 
-    Building *bu = l->head;
-<<<<<<< HEAD
-    // while (b != NULL) {
-    //     showbat(b, bu);
-    //     bu = bu->next;
-    // }
-=======
-    while (b != NULL)
-    {
-        // showBuild(b, bu, );
-        bu = bu->next;
+    while (p_building != NULL) {
+        drawBuilding(b, p_building, p_building->current ? 2 : 1);
+        p_building = p_building->next;
     }
->>>>>>> 9a6fb89db23c464a7f24f8116d4fe06f0524ce2b
 }
 
-void printBoard(Board *b)
-{
+void printBoard(Board *b) {
     printf("\n");
 
-    for (int i = 0; i < b->width; i++)
-    {
-        for (int j = 0; j < b->height; j++)
-        {
+    for (int i = 0; i < b->width; i++) {
+        for (int j = 0; j < b->height; j++) {
             int state = (b->map)[i][j];
 
-            if (state == 1)
-            {
-                /* case vide */
+
+            if (state == 0) {
+                printf(" \033[32;1m.\033[0m");
             }
-            if (state == 2)
-            {
-                /* on place un batiment */
+
+            if (state == 1) {
+                printf(" \033[34;1m#\033[0m");
             }
-            if (state == 3)
-            {
-                /* le batiment est placé */
+
+            if (state == 2) {
+                printf(" #");
             }
         }
 

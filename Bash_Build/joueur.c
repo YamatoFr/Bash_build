@@ -4,12 +4,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+void cleanBuffer() {
+    int c = 0;
+    while (c != '\n' && c != EOF)
+        c = getchar();
+}
+
 Player *createPlayer() {
-    Player *p = (Player *)mallocP(sizeof(Player));
-    printf("Entrez votre nom: ");
+    Player *p = mallocP(sizeof(Player));
+    printf("Entrez votre nom: \n");
+    cleanBuffer();
     fgets(p->name, 20, stdin);
-    p->money = 100;
-    p->salary = 0;
+    p->money = 300;
+    p->earnings = 0;
 
     return p;
 }

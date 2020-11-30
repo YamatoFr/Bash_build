@@ -1,59 +1,117 @@
 #include "./Header/prepas.h"
 
-// #include <conio.h>
-// #include <curses.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-void insertEnd(List *li, Building *bu)
-{
-    // Fonction similaire à une fonction d'insertion en fin de liste
-    if (li->nbBuilds == 0)
-    {
-        li->head = bu;
-    }
-    else
-    {
+void insertEnd(List *li, Building *p_building) {
+    if (li->nbBuilds == 0) {
+        li->head = p_building;
+    } else {
         Building *head = li->head;
-        while (head->next != NULL)
-        {
+        while (head->next != NULL) {
             head = head->next;
         }
-        head->next = bu;
+        head->next = p_building;
     }
 
     li->nbBuilds++;
 }
 
-Building *newBuilding(Board *b, Player *p, List *li)
-{
-    Building *bu = (Building *)mallocP(sizeof(Building));
-    bu->next = NULL;
-    bu->cost = 0;
-    bu->x = 0;
-    bu->y = 0;
+Building *newBuilding(Board *b, Player *p_player, List *p_liste, int day) {
+    Building *p_building = (Building *)mallocP(sizeof(Building));
+    p_building->next = NULL;
+    p_building->cost = 0;
+    p_building->x = 0;
+    p_building->y = 0;
+    p_building->current = 0;
+    bool not_done = true;
+    int choice;
+    insertEnd(p_liste, p_building);
 
-    insertEnd(li, bu);
-    int selecting = 0, choice = 0;
+    while (not_done == true) {
+        system("clear");
 
-<<<<<<< HEAD
-    // while (!kbhit()) {
-    //     /* kbhit = keyboard hit */
-    //     char key = getch();
-    //     if (key = "") {
-    //         /* code */
-    //     }
-    // }
+        printf(" %s you have [%d€] in your wallet  \n", p_player->name, p_player->money);
 
-    return bu;
-=======
-    while (!kbhit()) /* kbhit = keyboard hit */
-    {
-        // char key = getch();
-        // if (key == "S")
-        // {
-        //     /* code */
-        // }
+        printf("\n \n");
+        printf("%s Choose type of building : \n", p_player->name);
+        printf("============================\n");
+        printf("Make choice : \n");
+        printf("[1] Buy Bank |1000€|\n");
+        printf("[2] Buy House |300€|\n");
+        printf("[0] \033[36;1mCancel\033[0m\n");
+        printf("============================\n");
+        printf("Your choince : \n");
+        scanf("%d", &choice);
+
+        if (choice == 0) {
+            return NULL;
+        }
+
+        if (choice == 1) {
+            p_building->id = 1;
+            p_building->cost = 1000;
+            p_building->width = 4;
+            p_building->height = 4;
+            p_building->building_income = 100;
+            not_done = false;
+        }
+
+        if (choice == 2) {
+            p_building->id = 2;
+            p_building->cost = 300;
+            p_building->width = 2;
+            p_building->height = 2;
+            p_building->building_income = 0;
+            not_done = false;
+        }
     }
->>>>>>> 9a6fb89db23c464a7f24f8116d4fe06f0524ce2b
+    not_done = true;
+    while (not_done == true) {
+        system("clear");
+        printf("%d, %d\n", p_building->x, p_building->y);
+
+        resetboard(b, p_liste);
+        printBoard(b);
+
+        printf("Set position\n");
+        printf("============================\n");
+        printf("[1] move up\n");
+        printf("[2] move down\n");
+        printf("[3] move left\n");
+        printf("[4] move right\n");
+        printf("============================\n");
+        printf("Your choince : \n");
+        scanf("%d", &choice);
+
+        if (choice == 1 && p_building->y > 0) {
+            (p_building->y) = p_building->y - 1;
+        }
+        if (choice == 2 && p_building->y < p_building->height - b->height) {
+            (p_building->y) = p_building->y + 1;
+        }
+
+        if (choice == 3 && p_building->x > 0) {
+            (p_building->x) = p_building->x - 1;
+        }
+        if (choice == 4 && p_building->x < p_building->width - b->width) {
+            (p_building->x) = p_building->x + 1;
+        }
+
+        if (choice == 0) {
+            not_done = false;
+        }
+    }
+    p_building->pandingB = 1;
+    p_player->earnings = p_player->earnings + p_building->building_income;
+    p_player->money = p_player->money - p_building->cost;
+
+    return p_building;
+}
+
+void drawBuilding(Board *b, Building *bu, int state) {
+    for (int k = bu->x; k < bu->x + bu->width; k++) {
+        for (int l = bu->y; l < bu->y + bu->height; l++)
+            (b->map)[l][k] = state;
+    }
 }

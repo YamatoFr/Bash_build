@@ -44,11 +44,12 @@ Board *createBoard() {
     while (not_done == 0) {
         printf("Choose the size of your tray : \n");
         printf("============================\n");
-        printf("Faire choix : \n");
-        printf("[1] Plateau 10 par 10\n");
-        printf("[2] Plateau 20 par 20\n");
+        printf("Make choice : \n");
+        printf("[1] Tray 10 by 10\n");
+        printf("[2] Tray 20 by 20\n");
+        printf("[3] Make your own tray\n");
         printf("============================\n");
-        printf("Saisir choix : \n");
+        printf("Your choince : \n");
         scanf("%d", &choice);
 
         if (choice == 1) {
@@ -60,6 +61,28 @@ Board *createBoard() {
         if (choice == 2) {
             b->width = 20;
             b->height = 20;
+            not_done = 1;
+        }
+
+        if (choice == 3) {
+            b->width = 10;
+            b->height = 10;
+            printf("Enter a width and height greater than 10\n");
+            while (b->height <= 10 || b->width <= 10) {
+                printf("\n");
+                printf("============================\n");
+                printf("Enter width : \n");
+                scanf("%d", &b->width);
+                printf("\n");
+                printf("Enter height : \n");
+                scanf("%d", &b->height);
+                printf("============================\n");
+                printf("\n");
+
+                if (b->height <= 10 || b->width <= 10) {
+                    perror("|!| Error : please enter a height and width greater or equal than 10.\n");
+                }
+            }
             not_done = 1;
         }
     }
@@ -87,7 +110,6 @@ void printBoard(Board *b) {
     for (int i = 0; i < b->width; i++) {
         for (int j = 0; j < b->height; j++) {
             int state = (b->map)[i][j];
-
 
             if (state == 0) {
                 printf(" \033[32;1m.\033[0m");

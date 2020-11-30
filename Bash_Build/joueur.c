@@ -11,8 +11,9 @@ void cleanBuffer() {
 }
 
 Player *createPlayer() {
+    system("clear");
     Player *p = mallocP(sizeof(Player));
-    printf("Entrez votre nom: \n");
+    printf("Enter your name : \n");
     printf("============================\n");
     cleanBuffer();
     fgets(p->name, 20, stdin);

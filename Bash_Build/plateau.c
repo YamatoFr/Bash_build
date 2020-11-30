@@ -118,6 +118,10 @@ void printBoard(Board *b) {
             if (state == 1) {
                 printf(" \033[34;1m#\033[0m");
             }
+
+            if (state == 2) {
+                printf(" #");
+            }
         }
 
         printf("\n");
